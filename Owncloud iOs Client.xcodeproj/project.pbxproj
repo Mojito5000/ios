@@ -1522,6 +1522,9 @@
 		405655191CE0A204001266EE /* UtilsFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UtilsFileSystem.h; path = Utils/UtilsFileSystem.h; sourceTree = "<group>"; };
 		4056551A1CE0A204001266EE /* UtilsFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UtilsFileSystem.m; path = Utils/UtilsFileSystem.m; sourceTree = "<group>"; };
 		405AD0C01B56C26A00271424 /* iphoneShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphoneShare.png; sourceTree = "<group>"; };
+		409013E01DAFB6310071A6B3 /* Owncloud iOs Client.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Owncloud iOs Client.xcconfig"; sourceTree = "<group>"; };
+		409013E11DAFB6470071A6B3 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		409013E21DAFB6620071A6B3 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		40A1F17F1D8857740078C901 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		40A3A0E91CEC9B3A0056016A /* more-filledBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-filledBlack.png"; sourceTree = "<group>"; };
 		40A3A0EA1CEC9B3A0056016A /* more-filledBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-filledBlack@2x.png"; sourceTree = "<group>"; };
@@ -2069,6 +2072,7 @@
 				1324298B15ADBB3700DF823E /* AppDelegate.h */,
 				1324298C15ADBB3700DF823E /* AppDelegate.m */,
 				59F470311C5F97BA005B6091 /* Launch Screen.storyboard */,
+				409013DE1DAFB4D00071A6B3 /* Config */,
 				148DD5B11778425400FB9977 /* Branding */,
 				148DD5B81778501B00FB9977 /* Cells */,
 				40EDF89D1B4D112900700E3A /* HelpGuide */,
@@ -3048,6 +3052,16 @@
 				59EDC42B1C611F9A0050939C /* btnHelpPage5@2x.png */,
 			);
 			path = HelpPageButtons;
+			sourceTree = "<group>";
+		};
+		409013DE1DAFB4D00071A6B3 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				409013E01DAFB6310071A6B3 /* Owncloud iOs Client.xcconfig */,
+				409013E11DAFB6470071A6B3 /* Debug.xcconfig */,
+				409013E21DAFB6620071A6B3 /* Release.xcconfig */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		40A969DD1A5EDF900046A36C /* InstantUpload */ = {
