@@ -170,15 +170,18 @@ NSString *ReloadFileListFromDataBaseNotification = @"ReloadFileListFromDataBaseN
             
             if (imageData && localPath) {
                 NSLog(@"_Has Image Data and Local Path");
-                //Divide the file in chunks of 1024KB, then create the file with all chunks
                 
+                [fileManager createFileAtPath:localPath contents:imageData attributes:nil];
+            }
+    /*              //Divide the file in chunks of 1024KB, then create the file with all chunks
+     
                 //Variables
                __block NSUInteger offset = 0;
                 NSUInteger chunkSize = 1024 * 1024;
                 NSUInteger length = (NSUInteger) imageData.length;
                 NSLog(@"_assetFileSize_: %lu length: %lu", (unsigned long) (length/1024)/1024, length );
-                
-                if (length < (k_lenght_chunk *1024)) {
+     
+              if (length < (k_lenght_chunk *1024)) {
                      NSLog(@"_copyingFileDirectly_ - File: %@ - Path: %@ ",fileName, localPath);
                     [imageData writeToFile:localPath atomically:YES];
                     
@@ -224,31 +227,32 @@ NSString *ReloadFileListFromDataBaseNotification = @"ReloadFileListFromDataBaseN
                         });
                     }
                 }
+   */
              
-                if (![fileManager fileExistsAtPath:localPath])
-                {
-                    DLog(@"_error_createImageFileAtPath_ fileNotExists - File: %@ - Path: %@ - Error was code: %d - message: %s",fileName, localPath, errno, strerror(errno));
-                    NSLog(@"_error_createImageFileAtPath_ fileNotExists - File: %@ - Path: %@ - Error was code: %d - message: %s",fileName, localPath, errno, strerror(errno));
-                }
-                
-                NSLog(@"_creating a upload offline with: %lu bytes from: %@ path", imageData.length, localPath);
-                
-                UploadsOfflineDto *currentUpload = [[UploadsOfflineDto alloc] init];
-                currentUpload.originPath = localPath;
-                currentUpload.destinyFolder = remoteFolder;
-                currentUpload.uploadFileName = fileName;
-                currentUpload.estimateLength = imageData.length;;
-                currentUpload.userId = currentUser.idUser;
-                currentUpload.isLastUploadFileOfThisArray = isLastUploadFileOfThisArray;
-                currentUpload.status = waitingAddToUploadList;
-                currentUpload.chunksLength = k_lenght_chunk;
-                currentUpload.uploadedDate = 0;
-                currentUpload.kindOfError = notAnError;
-                currentUpload.isInternalUpload = YES;
-                currentUpload.taskIdentifier = 0;
-                
-                UploadFile(localPath, currentUpload);
+            if (![fileManager fileExistsAtPath:localPath])
+            {
+                DLog(@"_error_createImageFileAtPath_ fileNotExists - File: %@ - Path: %@ - Error was code: %d - message: %s",fileName, localPath, errno, strerror(errno));
+                NSLog(@"_error_createImageFileAtPath_ fileNotExists - File: %@ - Path: %@ - Error was code: %d - message: %s",fileName, localPath, errno, strerror(errno));
             }
+            
+            NSLog(@"_creating a upload offline with: %lu bytes from: %@ path", imageData.length, localPath);
+            
+            UploadsOfflineDto *currentUpload = [[UploadsOfflineDto alloc] init];
+            currentUpload.originPath = localPath;
+            currentUpload.destinyFolder = remoteFolder;
+            currentUpload.uploadFileName = fileName;
+            currentUpload.estimateLength = imageData.length;;
+            currentUpload.userId = currentUser.idUser;
+            currentUpload.isLastUploadFileOfThisArray = isLastUploadFileOfThisArray;
+            currentUpload.status = waitingAddToUploadList;
+            currentUpload.chunksLength = k_lenght_chunk;
+            currentUpload.uploadedDate = 0;
+            currentUpload.kindOfError = notAnError;
+            currentUpload.isInternalUpload = YES;
+            currentUpload.taskIdentifier = 0;
+            
+            UploadFile(localPath, currentUpload);
+        
         }];
     } else if (assetToUpload.mediaType == PHAssetMediaTypeVideo) {
          NSLog(@"_Asset to Upload it's an Video");
